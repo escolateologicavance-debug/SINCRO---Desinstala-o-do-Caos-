@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Dia 7 - Caderneta Digital SINCRO</title>
+    <style>
+        :root { --primary: #1a2a6c; --accent: #0284c7; --bg: #f1f5f9; --text: #1e293b; --gold: #ca8a04; --success: #16a34a; }
+        
+        html, body { overflow-x: hidden; width: 100%; margin: 0; padding: 0; background: var(--bg); font-family: 'Segoe UI', sans-serif; color: var(--text); }
+        .container { max-width: 500px; margin: 0 auto; padding: 15px; box-sizing: border-box; }
+        
+        .card { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); margin-bottom: 20px; border-top: 5px solid var(--primary); }
+        h1 { color: var(--primary); font-size: 1.4em; text-align: center; margin-bottom: 20px; }
+        h2 { color: var(--primary); font-size: 1.1em; margin-top: 25px; margin-bottom: 10px; border-bottom: 2px solid #e2e8f0; padding-bottom: 5px;}
+
+        .btn-audio { background: #fff; color: var(--primary); border: 2px solid var(--primary); border-radius: 12px; padding: 15px; font-weight: bold; cursor: pointer; width: 100%; margin-bottom: 20px; font-size: 1.1em; }
+
+        .clinica-box { background: #eff6ff; border: 1px solid #cbd5e1; padding: 18px; border-radius: 12px; margin: 15px 0; font-size: 0.95em; line-height: 1.6; }
+        
+        /* Estilo da Caderneta */
+        .caderneta-form { background: #fff; padding: 20px; border-radius: 15px; border: 1px solid #e2e8f0; margin-top: 20px; }
+        
+        .app-link-box { background: #fffbeb; border: 2px dashed var(--gold); padding: 15px; border-radius: 10px; text-align: center; margin-bottom: 20px; }
+        .app-link { color: var(--gold); font-weight: bold; text-decoration: none; font-size: 1.1em; display: block; padding: 10px; }
+
+        .input-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; color: var(--primary); font-size: 0.9em; }
+        .input-score { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; font-size: 1em; background: #f8fafc; text-align: center;}
+
+        /* Barras de Progressão (Range) */
+        .range-group { margin-bottom: 18px; }
+        .range-labels { display: flex; justify-content: space-between; font-size: 0.8em; color: #64748b; margin-top: -3px; margin-bottom: 5px;}
+        input[type=range] { width: 100%; cursor: pointer; margin: 0; }
+
+        .btn-whatsapp { background: var(--success); color: white; border: none; padding: 20px; border-radius: 15px; width: 100%; font-weight: bold; cursor: pointer; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 25px; font-size: 1.1em; box-sizing: border-box; }
+        
+        img { width: 100%; border-radius: 15px; margin: 20px 0; display: block; height: auto; }
+        .quote-bussola { font-style: italic; text-align: center; color: var(--accent); margin: 20px 0; font-weight: bold; font-size: 1em; line-height: 1.4;}
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="audio-top-box">
+        <button class="btn-audio" onclick="toggleAudio()" id="btnAudio">Ouvir</button>
+    </div>
+
+    <div class="card" id="conteudoFinal">
+        <h1>Dia 7: Sua Bússola de Autonomia</h1>
+        
+        <p>Parabéns. Você completou o ciclo de intervenção intensiva. A estabilidade que você conquistou agora precisa ser sustentada pela prática diária. O Método SINCRO não é um salvador, é uma ferramenta.</p>
+
+        <div class="quote-bussola">
+            “Te damos a bússola, mas quem anda é você.”
+        </div>
+
+        <div class="clinica-box">
+            <b>A Consolidação Neural (21 Dias):</b> O cérebro precisa de repetição para validar novas rotas. Se você parar agora, a biologia antiga tentará retomar o controle. Nos próximos 14 dias, sua missão é usar a <b>Caderneta Digital SINCRO</b> para monitorar sua engenharia emocional e garantir que seus princípios e convicções continuem no governo.
+        </div>
+
+        <a href="7-img.png" style="text-decoration:none;">
+            <img src="7-img.png" alt="A Jornada da Autonomia">
+        </a>
+
+        <h2>Caderneta Digital SINCRO: Monitoramento Diário</h2>
+        
+        <div class="caderneta-form">
+            <div class="app-link-box">
+                <label>PASSO 1: Meça seu Score no App</label>
+                <a href="https://escolateologicavance-debug.github.io/terapeuta-digital/" target="_blank" class="app-link">🔗 Acessar Calculadora SC (SYNKHRO®)</a>
+            </div>
+
+            <div class="input-group">
+                <label for="scoreDiario">PASSO 2: Anote seu Score de Coerência Mental (MC)</label>
+                <input type="number" id="scoreDiario" class="input-score" placeholder="Ex: 85" min="0" max="100">
+            </div>
+
+            <label style="margin-top:20px; display:block;">PASSO 3: Análise Diária (Arraste para definir)</label>
+            
+            <div class="range-group">
+                <label>Ansiedade</label>
+                <input type="range" id="rangeAnsiedade" min="0" max="10" value="5">
+                <div class="range-labels"><span>Baixa (Paz)</span><span>Alta (Tensão)</span></div>
+            </div>
+
+            <div class="range-group">
+                <label>Paz Interna</label>
+                <input type="range" id="rangePaz" min="0" max="10" value="5">
+                <div class="range-labels"><span>Mínima</span><span>Sustentada</span></div>
+            </div>
+
+            <div class="range-group">
+                <label>Qualidade do Sono</label>
+                <input type="range" id="rangeSono" min="0" max="10" value="5">
+                <div class="range-labels"><span>Ruim</span><span>Reparador</span></div>
+            </div>
+
+            <div class="range-group">
+                <label>Organização do Cômodo Chave</label>
+                <input type="range" id="rangeOrganiza" min="0" max="10" value="5">
+                <div class="range-labels"><span>Caos</span><span>Ordem Visual</span></div>
+            </div>
+
+            <div class="range-group">
+                <label>Qualidade Emocional do Dia</label>
+                <input type="range" id="rangeQualidade" min="0" max="10" value="5">
+                <div class="range-labels"><span>Tóxica</span><span>Nourishing (Nutritiva)</span></div>
+            </div>
+
+            <p style="font-size:0.85em; color:#64748b; margin-top:20px;">Ao preencher, clique abaixo para enviar ao Núcleo SINCRO.</p>
+        </div>
+
+        <button class="btn-whatsapp" onclick="enviarRelatorio()">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA" style="width:25px; margin:0; box-shadow:none;">
+            Enviar Relatório Diário (Núcleo SINCRO)
+        </button>
+
+    </div>
+
+</div>
+
+<div vw class="enabled"><div vw-access-button class="active"></div><div vw-plugin-wrapper></div></div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
+
+<script>
+    // Função de Áudio
+    let synth = window.speechSynthesis;
+    let falando = false;
+
+    function toggleAudio() {
+        const btn = document.getElementById('btnAudio');
+        if (!falando) {
+            let texto = document.getElementById('conteudoFinal').innerText;
+            let utterance = new SpeechSynthesisUtterance(texto);
+            utterance.lang = 'pt-BR';
+            utterance.onstart = () => { falando = true; btn.innerText = "Parar"; };
+            utterance.onend = () => { falando = false; btn.innerText = "Ouvir"; };
+            synth.speak(utterance);
+        } else {
+            synth.cancel();
+            falando = false;
+            btn.innerText = "Ouvir";
+        }
+    }
+
+    // Função para Enviar via WhatsApp e seguir para os Créditos
+    function enviarRelatorio() {
+        const score = document.getElementById('scoreDiario').value;
+        const ansiedade = document.getElementById('rangeAnsiedade').value;
+        const paz = document.getElementById('rangePaz').value;
+        const sono = document.getElementById('rangeSono').value;
+        const organiza = document.getElementById('rangeOrganiza').value;
+        const qualidade = document.getElementById('rangeQualidade').value;
+        const data = new Date().toLocaleDateString('pt-BR');
+
+        if(!score) { 
+            alert("Por favor, meça e anote seu Score MC antes de enviar."); 
+            return; 
+        }
+
+        const textoWA = `*Relatório Diário SINCRO* (${data})\n\n` +
+                        `*Score Emocional (SC):* ${score}/100\n\n` +
+                        `*Análise de Barras (0-10):*\n` +
+                        `- Ansiedade: ${ansiedade}\n` +
+                        `- Paz Interna: ${paz}\n` +
+                        `- Qualidade do Sono: ${sono}\n` +
+                        `- Organização Cômodo: ${organiza}\n` +
+                        `- Qualidade Emocional: ${qualidade}\n\n` +
+                        `_Enviado via Caderneta Digital SINCRO_`;
+
+        const numeroWA = "5566984666186"; 
+        const linkWA = `https://wa.me/${numeroWA}?text=${encodeURIComponent(textoWA)}`;
+        
+        // Abre o WhatsApp
+        window.open(linkWA, '_blank');
+
+        // Redireciona a página atual para os créditos finais (12.html)
+        setTimeout(() => {
+            window.location.href = '12.html';
+        }, 1000); // Aguarda 1 segundo para garantir que o comando de abertura do WA foi processado
+    }
+
+</script>
+</body>
+</html>
