@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sincroterapia - Gestão Emocional</title>
+    
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1a2a6c">
+    <link rel="apple-touch-icon" href="logo-192.png"> <style>
+        body { background: #f4f4f4; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        .container { text-align: center; width: 80%; max-width: 400px; }
+        img { width: 150px; margin-bottom: 20px; }
+        input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; }
+        button { width: 100%; padding: 12px; background: #1a2a6c; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
+        p { font-size: 0.8em; color: #666; margin-top: 15px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="logo-512.png" alt="Sincroterapia">
+        <h2>Check-in de Manutenção</h2>
+        <input type="text" id="user" placeholder="Usuário">
+        <input type="password" id="pass" placeholder="Senha">
+        <button onclick="login()">ACESSAR MANUTENÇÃO</button>
+        <p>Gilberto Moreira - CBO 2515-50<br>Sincroterapia Bíblica: O Verbo é Fazer.</p>
+    </div>
+
+    <script>
+        function login() {
+            const pass = document.getElementById('pass').value;
+            // Dica: Usuário não está sendo validado, apenas a senha
+            if(pass === 'mtsincro') {
+                window.location.href = '1.html';
+            } else {
+                alert('Acesso não sincronizado.');
+            }
+        }
+        
+        // Registro do Service Worker com log de confirmação
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(reg => console.log('Sincro: App pronto para uso offline.'))
+                    .catch(err => console.log('Sincro: Erro no SW', err));
+            });
+        }
+    </script>
+</body>
+</html>

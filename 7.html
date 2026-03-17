@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dia 3 - Sincronia e Estabilidade</title>
+    <style>
+        :root { --primary: #1a2a6c; --alert: #e53e3e; --bg: #f8fafc; --success: #2f855a; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: #2d3748; margin: 0; padding: 15px; }
+        .container { max-width: 500px; margin: 0 auto; }
+        .card { background: white; padding: 20px; border-radius: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px; }
+        h1 { color: var(--primary); font-size: 1.3em; text-align: center; }
+
+        .audio-top-box { text-align: center; margin-bottom: 20px; }
+        .btn-audio-control { background: #f1f5f9; color: var(--primary); border: 2px solid var(--primary); border-radius: 12px; padding: 15px; font-weight: bold; cursor: pointer; width: 100%; font-size: 1.1em; }
+
+        .grid-vazamentos { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 20px 0; }
+        .btn-vazamento { padding: 15px; border: 2px solid #e2e8f0; border-radius: 12px; background: white; font-weight: bold; color: var(--primary); cursor: pointer; }
+        
+        .score-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.9em; }
+        .score-table td { padding: 10px; border-bottom: 1px solid #edf2f7; }
+        .input-check { width: 22px; height: 22px; accent-color: var(--success); }
+
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 999; }
+        .modal { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 85%; max-width: 400px; background: white; padding: 25px; border-radius: 20px; z-index: 1000; border: 2px solid var(--primary); }
+        .close-btn { background: var(--primary); color: white; border: none; padding: 12px; width: 100%; border-radius: 8px; font-weight: bold; margin-top: 15px; cursor: pointer; }
+
+        .foco-aula { background: #fff5f5; padding: 15px; border-radius: 12px; font-size: 0.9em; border-left: 5px solid var(--alert); margin-bottom: 15px; }
+        .neuro-box { background: #eef2ff; border: 1px solid #d1d9ff; padding: 15px; border-radius: 12px; font-size: 0.85em; margin-bottom: 15px; }
+        .btn-acao { background: var(--primary); color: white; border: none; padding: 18px; border-radius: 12px; width: 100%; font-weight: bold; cursor: pointer; text-decoration: none; display: block; text-align: center; margin-top: 20px; }
+        img { width: 100%; border-radius: 12px; margin: 15px 0; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="audio-top-box">
+        <button class="btn-audio-control" onclick="toggleAudio()" id="btnAudio">Ouvir</button>
+    </div>
+
+    <div class="card" id="conteudoClinico">
+        <h1>Dia 3: Engenharia de Manutenção</h1>
+        
+        <p>Seu cérebro está doutrinado no piloto automático. Quando você corta a dopamina, ele buscará as cavernas antigas para se sentir seguro. Identifique seus vazamentos hoje e entenda: a recaída acontece porque seu mapa neural busca solução naquilo que ele já está doutrinado para agir. Este estágio de abstinência traz surtos de crises, por isso inserir tarefas saudáveis como substitutos imediatos dessas cavernas psicossomáticas é indispensável.</p>
+
+        <div class="grid-vazamentos">
+            <button class="btn-vazamento" onclick="openModal('Stress')">Stress</button>
+            <button class="btn-vazamento" onclick="openModal('Solidão')">Solidão</button>
+            <button class="btn-vazamento" onclick="openModal('Preocupação')">Preocupação</button>
+            <button class="btn-vazamento" onclick="openModal('Rancor')">Rancor</button>
+        </div>
+
+        <div class="foco-aula">
+            <strong>Alerta de Abstinência:</strong> O corte da dopamina barata gera irritação. Substitua a caverna por ações saudáveis imediatas como água ou respiração consciente.
+        </div>
+
+        <div class="neuro-box">
+            <strong>O Poder do Sono e Ritual Noturno:</strong> Segundo o Dr. Andrew Huberman, o sono é o período de "limpeza química" do cérebro. Sem o Ritual Noturno (corte de telas, escuridão e resfriamento do corpo), seu sistema glinfático não remove os detritos metabólicos do dia anterior. Isso destrói sua regulação emocional, tornando o autocontrole biologicamente impossível. É uma engenharia: sem sono, não há Sincroterapia.
+        </div>
+
+        <h3>Tabela de Pontuação de Estabilidade</h3>
+        <table class="score-table">
+            <tr><td>Luz solar matinal (10 min) para ancorar o ciclo</td><td><input type="checkbox" class="input-check"></td></tr>
+            <tr><td>Corte de telas (60 min antes de deitar)</td><td><input type="checkbox" class="input-check"></td></tr>
+            <tr><td>Quarto em escuridão total e temperatura fresca</td><td><input type="checkbox" class="input-check"></td></tr>
+            <tr><td>Oração e esvaziamento racional do dia</td><td><input type="checkbox" class="input-check"></td></tr>
+        </table>
+
+        <p style="font-style: italic; border-left: 3px solid var(--primary); padding-left: 10px;">
+            "Em paz também me deitarei e dormirei, porque só tu, Senhor, me fazes habitar em segurança." (Salmo 4:8)
+        </p>
+
+        <a href="3-img.png" style="text-decoration:none; color:var(--primary); font-weight:bold;">
+            <img src="3-img.png" alt="Sincronia Cerebral">
+            A reconexão exige o abandono das velhas rotas neurais!
+        </a>
+    </div>
+
+    <a href="8.html" class="btn-acao">AVANÇAR PARA O DIA 4</a>
+</div>
+
+<div class="overlay" id="overlay" onclick="closeModal()"></div>
+<div class="modal" id="modal">
+    <h3 id="modalTitle"></h3>
+    <div id="modalContent" style="font-size: 0.95em; line-height: 1.5;"></div>
+    <button class="close-btn" onclick="closeModal()">FECHAR E AGIR</button>
+</div>
+
+<div vw class="enabled"><div vw-access-button class="active"></div><div vw-plugin-wrapper></div></div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
+
+<script>
+    const conteudos = {
+        'Stress': '<b>Clínica:</b> O stress crônico atrofia o hipocampo. <br><b>Sincro:</b> Substitua a reação pela ação planejada. <br><b>Bíblia:</b> "Não andeis ansiosos por coisa alguma; antes as vossas petições sejam em tudo conhecidas diante de Deus pela oração e súplica, com ação de graças." (Filipenses 4:6)',
+        'Solidão': '<b>Clínica:</b> O isolamento ativa o sistema de ameaça cerebral. <br><b>Sincro:</b> Conecte-se com pessoas, não algoritmos. <br><b>Bíblia:</b> "Melhor é serem dois do que um, porque têm melhor recompensa do seu trabalho. Porque se um cair, o outro levanta o seu companheiro." (Eclesiastes 4:9-10)',
+        'Preocupação': '<b>Clínica:</b> O cérebro gasta energia vital com ameaças imaginárias. <br><b>Sincro:</b> Pare de pré-ocupar o espaço do Hema. <br><b>Bíblia:</b> "Não vos inquieteis, pois, pelo dia de amanhã, porque o dia de amanhã cuidará de si mesmo. Basta a cada dia o seu mal." (Mateus 6:34)',
+        'Rancor': '<b>Clínica:</b> Guardar mágoa gera inflamação sistêmica e neurotoxicidade. <br><b>Sincro:</b> O perdão é a desinstalação de um vírus. <br><b>Bíblia:</b> "E, quando estiverdes orando, perdoai, se tendes alguma coisa contra alguém, para que vosso Pai, que está nos céus, vos perdoe as vossas ofensas." (Marcos 11:25)'
+    };
+
+    function openModal(tipo) {
+        document.getElementById('modalTitle').innerText = tipo;
+        document.getElementById('modalContent').innerHTML = conteudos[tipo];
+        document.getElementById('modal').style.display = 'block';
+        document.getElementById('overlay').style.display = 'block';
+        if (falando) toggleAudio();
+    }
+
+    function closeModal() {
+        document.getElementById('modal').style.display = 'none';
+        document.getElementById('overlay').style.display = 'none';
+    }
+
+    let synth = window.speechSynthesis;
+    let falando = false;
+
+    function toggleAudio() {
+        const btn = document.getElementById('btnAudio');
+        if (!falando) {
+            let texto = document.getElementById('conteudoClinico').innerText;
+            let utterance = new SpeechSynthesisUtterance(texto);
+            utterance.lang = 'pt-BR';
+            utterance.onstart = () => { falando = true; btn.innerText = "Parar"; };
+            utterance.onend = () => { falando = false; btn.innerText = "Ouvir"; };
+            synth.speak(utterance);
+        } else {
+            synth.cancel();
+            falando = false;
+            btn.innerText = "Ouvir";
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Dia 5 - Princípios e Convicções</title>
+    <style>
+        :root { --primary: #0f172a; --accent: #0284c7; --bg: #f8fafc; --text: #1e293b; --gold: #ca8a04; }
+        
+        html, body { overflow-x: hidden; width: 100%; margin: 0; padding: 0; background: var(--bg); font-family: 'Segoe UI', sans-serif; color: var(--text); }
+        .container { max-width: 500px; margin: 0 auto; padding: 15px; box-sizing: border-box; }
+        
+        .card { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); margin-bottom: 20px; border-top: 5px solid var(--primary); }
+        h1 { color: var(--primary); font-size: 1.4em; text-align: center; margin-bottom: 20px; }
+        
+        .btn-audio { background: #fff; color: var(--primary); border: 2px solid var(--primary); border-radius: 12px; padding: 15px; font-weight: bold; cursor: pointer; width: 100%; margin-bottom: 20px; font-size: 1.1em; }
+
+        .clinica-box { background: #f1f5f9; border: 1px solid #e2e8f0; padding: 18px; border-radius: 12px; margin: 15px 0; font-size: 0.95em; line-height: 1.6; }
+        .biblico-anchor { background: #fefce8; border-left: 5px solid var(--gold); padding: 15px; margin: 20px 0; font-style: italic; font-size: 0.92em; color: #854d0e; }
+
+        .meta-container { background: #fff; border: 2px dashed #cbd5e1; padding: 20px; border-radius: 15px; margin-top: 20px; }
+        .meta-input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 1em; box-sizing: border-box; background: #fff; }
+        
+        .btn-acao { background: var(--primary); color: white; border: none; padding: 20px; border-radius: 15px; width: 100%; font-weight: bold; cursor: pointer; text-decoration: none; display: block; text-align: center; margin-top: 25px; font-size: 1.1em; }
+        
+        img { width: 100%; border-radius: 15px; margin: 20px 0; display: block; height: auto; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="audio-top-box">
+        <button class="btn-audio" onclick="toggleAudio()" id="btnAudio">Ouvir</button>
+    </div>
+
+    <div class="card" id="conteudoDaniel">
+        <h1>Dia 5: Princípios e Convicções</h1>
+        
+        <p>A estabilidade que você sente hoje não é um estado de repouso, mas de prontidão. Como Daniel na Babilônia, você foi resgatado de um sistema de escravidão emocional para exercer governo sobre sua própria vida. Daniel decidiu não se contaminar com o estilo de vida que o cercava, mantendo suas convicções inabaláveis mesmo sob pressão extrema.</p>
+
+        <div class="clinica-box">
+            <b>Neuroplasticidade Avançada:</b> O seu cérebro está agora em uma fase de <b>Reconsolidação Sináptica</b>. A energia que antes era drenada por vícios e conflitos está livre. Se você não der um destino útil a essa energia, o cérebro tentará voltar para a rota antiga por puro tédio biológico. Precisamos de metas de expansão para solidificar as novas vias neurais.
+        </div>
+
+        <div class="biblico-anchor">
+            Então os governadores e os sátrapas procuravam achar ocasião contra Daniel a respeito do reino; mas não podiam achar ocasião ou culpa alguma; porque ele era fiel, e não se achava nele nenhum vício nem culpa. Daniel 6 verso 4.
+        </div>
+
+        <div class="meta-container">
+            <b>Metas de Direcionamento de Energia:</b>
+            <p style="font-size: 0.85em; color: #64748b; margin-bottom: 10px;">Preencha três metas práticas para usar sua nova energia:</p>
+            <input type="text" class="meta-input" placeholder="1. Meta de Autocuidado ou Estudo">
+            <input type="text" class="meta-input" placeholder="2. Meta de Relacionamento ou Serviço">
+            <input type="text" class="meta-input" placeholder="3. Meta de Disciplina Espiritual">
+        </div>
+
+        <p style="margin-top: 20px;">Daniel não se vitimizou. Ele usou a disciplina como escudo e a oração como combustível. Seja o gestor da sua nova liberdade.</p>
+
+        <a href="5-img.png" style="text-decoration:none;">
+            <img src="5-img.png" alt="A firmeza de Daniel">
+            <p style="text-align:center; color:var(--primary); font-weight:bold;">A convicção interna molda a realidade externa!</p>
+        </a>
+    </div>
+
+    <a href="10.html" class="btn-acao">AVANÇAR PARA O DIA 6</a>
+</div>
+
+<div vw class="enabled"><div vw-access-button class="active"></div><div vw-plugin-wrapper></div></div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
+
+<script>
+    let synth = window.speechSynthesis;
+    let falando = false;
+
+    function toggleAudio() {
+        const btn = document.getElementById('btnAudio');
+        if (!falando) {
+            let texto = document.getElementById('conteudoDaniel').innerText;
+            let utterance = new SpeechSynthesisUtterance(texto);
+            utterance.lang = 'pt-BR';
+            utterance.onstart = () => { falando = true; btn.innerText = "Parar"; };
+            utterance.onend = () => { falando = false; btn.innerText = "Ouvir"; };
+            synth.speak(utterance);
+        } else {
+            synth.cancel();
+            falando = false;
+            btn.innerText = "Ouvir";
+        }
+    }
+</script>
+</body>
+</html>

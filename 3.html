@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sincroterapia - A Regra da Fala</title>
+    <style>
+        :root { --primary: #1a2a6c; --accent: #4a90e2; --text: #444; --bg: #fdfdfd; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; line-height: 1.6; }
+        .container { max-width: 500px; margin: 0 auto; }
+        .header { text-align: center; margin-bottom: 20px; }
+        .logo { width: 80px; opacity: 0.9; }
+        
+        article { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        h1 { color: var(--primary); font-size: 1.3em; text-align: center; margin-bottom: 20px; }
+        
+        .box-metfora { background: #f8f9fa; border: 1px solid #e9ecef; padding: 15px; border-radius: 10px; margin: 15px 0; font-size: 0.95em; }
+        .biblico { border-left: 4px solid var(--primary); padding-left: 15px; margin: 20px 0; color: #2c3e50; }
+        
+        .tabela-comparativa { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.85em; }
+        .tabela-comparativa th { background: var(--primary); color: white; padding: 10px; }
+        .tabela-comparativa td { border: 1px solid #ddd; padding: 10px; text-align: center; }
+
+        .btn { border: none; border-radius: 10px; padding: 15px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; text-decoration: none; margin-top: 15px; transition: 0.3s; }
+        #btnOuvir { background: #eef2ff; color: var(--primary); width: 100%; }
+        .btn-proximo { background: var(--primary); color: white; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <img src="logo-192.png" alt="Sincroterapia" class="logo">
+        </div>
+
+        <article id="artigo">
+            <h1>A Regra da Fala Necessária</h1>
+            
+            <p>Imagine que você está em um guichê de aeroporto. Para fazer seu check-in, você detalha ao atendente por que vai viajar ou o que está indo buscar? <strong>Não.</strong> A conversa é objetiva e curta. Diz-se apenas o necessário.</p>
+
+            <div class="box-metfora">
+                Assim funciona a Sincroterapia. Não gravitamos em torno de detalhes. Focamos no que é criteriosamente necessário para o seu ganho de tempo e objetividade.
+            </div>
+
+            <div class="biblico">
+                <strong>A cura não vem do que você fala, mas do que você ouve.</strong><br>
+                Jesus não ouviu as biografias de 38 anos de sofrimento do paralítico, ou os 12 anos de dor da mulher com fluxo de sangue. Ele simplesmente perguntou: <em>"O que queres que eu te faça?"</em>.
+            </div>
+
+            <p>Dispensamos a escuta analítica porque compreendemos a finitude humana. Somos seres falíveis e em constante desintegração. O que passar disso são detalhes particulares, mas a raiz é comum a todos: a necessidade inadiável de reparo.</p>
+
+            <p>A Manutenção é indispensável em tudo o que é perecível. É estrutural, não apenas moral.</p>
+
+            <table class="tabela-comparativa">
+                <tr>
+                    <th>Tratamento (Reação)</th>
+                    <th>Manutenção (Ação)</th>
+                </tr>
+                <tr>
+                    <td>Caro e Demorado</td>
+                    <td>Barato e Eficaz</td>
+                </tr>
+                <tr>
+                    <td>Foca no "Porquê"</td>
+                    <td>Foca no "Como"</td>
+                </tr>
+                <tr>
+                    <td>Conserta o que quebrou</td>
+                    <td>Evita a quebra</td>
+                </tr>
+            </table>
+        </article>
+
+        <div class="controls">
+            <button id="btnOuvir" class="btn" onclick="toggleAudio()">▶ OUVIR AULA</button>
+            <a href="4.html" class="btn btn-proximo">VER MAPA DA JORNADA</a>
+        </div>
+    </div>
+
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+        let falando = false;
+        let synthesis = window.speechSynthesis;
+        function toggleAudio() {
+            if (!falando) {
+                const texto = document.getElementById('artigo').innerText;
+                const msg = new SpeechSynthesisUtterance(texto);
+                msg.lang = 'pt-BR';
+                msg.onend = () => resetBtn();
+                synthesis.speak(msg);
+                document.getElementById('btnOuvir').innerHTML = "⏹ PARAR LEITURA";
+                falando = true;
+            } else { synthesis.cancel(); resetBtn(); }
+        }
+        function resetBtn() {
+            document.getElementById('btnOuvir').innerHTML = "▶ OUVIR AULA";
+            falando = false;
+        }
+    </script>
+</body>
+</html>

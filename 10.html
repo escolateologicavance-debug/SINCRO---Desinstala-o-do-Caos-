@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Dia 6 - Blindagem Social</title>
+    <style>
+        :root { --primary: #1e293b; --danger: #991b1b; --bg: #f8fafc; --text: #334155; }
+        
+        html, body { overflow-x: hidden; width: 100%; margin: 0; padding: 0; background: var(--bg); font-family: 'Segoe UI', sans-serif; color: var(--text); }
+        .container { max-width: 500px; margin: 0 auto; padding: 15px; box-sizing: border-box; }
+        
+        .card { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); margin-bottom: 20px; border-top: 5px solid var(--danger); }
+        h1 { color: var(--primary); font-size: 1.4em; text-align: center; margin-bottom: 20px; }
+        
+        .btn-audio { background: #fff; color: var(--primary); border: 2px solid var(--primary); border-radius: 12px; padding: 15px; font-weight: bold; cursor: pointer; width: 100%; margin-bottom: 20px; font-size: 1.1em; }
+
+        .clinica-box { background: #fef2f2; border: 1px solid #fecaca; padding: 18px; border-radius: 12px; margin: 15px 0; font-size: 0.95em; line-height: 1.6; color: #991b1b; }
+        .biblico-anchor { background: #f8fafc; border-left: 5px solid var(--primary); padding: 15px; margin: 20px 0; font-style: italic; font-size: 0.92em; }
+
+        .missao-box { background: white; border: 1px solid #e2e8f0; padding: 20px; border-radius: 15px; margin-top: 20px; }
+        .check-item { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px solid #f1f5f9; }
+        .check-item input { width: 20px; height: 20px; margin-top: 3px; flex-shrink: 0; }
+        
+        .btn-acao { background: var(--primary); color: white; border: none; padding: 20px; border-radius: 15px; width: 100%; font-weight: bold; cursor: pointer; text-decoration: none; display: block; text-align: center; margin-top: 25px; font-size: 1.1em; }
+        
+        img { width: 100%; border-radius: 15px; margin: 20px 0; display: block; height: auto; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="audio-top-box">
+        <button class="btn-audio" onclick="toggleAudio()" id="btnAudio">Ouvir</button>
+    </div>
+
+    <div class="card" id="conteudoBlindagem">
+        <h1>Dia 6: Blindagem Social</h1>
+        
+        <p>A maior ameaça à sua estabilidade não vem de dentro, mas do contágio social. Estar blindado não significa fugir das pessoas, mas tornar-se <b>imune</b> à influência delas. Daniel conviveu com os leões sem ser devorado por eles porque sua identidade estava firmada em princípios que o ambiente não podia alterar.</p>
+
+        <div class="clinica-box">
+            <b>O Neurônio Espelho:</b> Nosso cérebro tem uma tendência biológica de imitar quem está ao redor. Se você convive com quem reclama, você reclamará. Se convive com quem se vicia, seu cérebro pedirá o vício. A Blindagem Social exige que você escolha conscientemente quem terá acesso ao seu campo emocional.
+        </div>
+
+        <div class="biblico-anchor">
+            Não vos enganeis: as más conversações corrompem os bons costumes. Primeira Coríntios 15 verso 33.
+        </div>
+
+        <div class="missao-box">
+            <b>Estratégias de Imunidade:</b>
+            <div class="check-item">
+                <input type="checkbox"> <span><b>Filtro de Acesso:</b> Identifiquei quem drena minha energia e estabeleci limites de tempo.</span>
+            </div>
+            <div class="check-item">
+                <input type="checkbox"> <span><b>Resposta Neutra:</b> Em vez de discutir ou julgar, usei silêncio ou respostas breves.</span>
+            </div>
+            <div class="check-item">
+                <input type="checkbox"> <span><b>Guarda do Templo:</b> Decidi não participar de ambientes que ativam gatilhos antigos.</span>
+            </div>
+        </div>
+
+        <p style="margin-top: 20px;">Você não precisa mudar os outros, mas precisa garantir que os outros não mudem você de volta para o que você era. A sua integridade é a sua maior defesa.</p>
+
+        <a href="6-img.png" style="text-decoration:none;">
+            <img src="6-img.png" alt="Blindagem Social">
+            <p style="text-align:center; color:var(--primary); font-weight:bold;">A imunidade começa na decisão de quem você deixa entrar!</p>
+        </a>
+    </div>
+
+    <a href="11.html" class="btn-acao">AVANÇAR PARA O ÚLTIMO DIA</a>
+</div>
+
+<div vw class="enabled"><div vw-access-button class="active"></div><div vw-plugin-wrapper></div></div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
+
+<script>
+    let synth = window.speechSynthesis;
+    let falando = false;
+
+    function toggleAudio() {
+        const btn = document.getElementById('btnAudio');
+        if (!falando) {
+            let texto = document.getElementById('conteudoBlindagem').innerText;
+            let utterance = new SpeechSynthesisUtterance(texto);
+            utterance.lang = 'pt-BR';
+            utterance.onstart = () => { falando = true; btn.innerText = "Parar"; };
+            utterance.onend = () => { falando = false; btn.innerText = "Ouvir"; };
+            synth.speak(utterance);
+        } else {
+            synth.cancel();
+            falando = false;
+            btn.innerText = "Ouvir";
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dia 1 - Ordem Imediata</title>
+    <style>
+        :root { --primary: #1a2a6c; --accent: #28a745; --light: #f4f7f6; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--light); color: #333; margin: 0; padding: 20px; line-height: 1.6; }
+        .container { max-width: 500px; margin: 0 auto; }
+        
+        .card { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 20px; }
+        h1 { color: var(--primary); font-size: 1.3em; margin-bottom: 15px; text-align: center; }
+        
+        .task-list { list-style: none; padding: 0; }
+        .task-item { display: flex; align-items: center; gap: 12px; padding: 15px 0; border-bottom: 1px solid #eee; }
+        .task-item input[type="checkbox"] { width: 24px; height: 24px; cursor: pointer; }
+        
+        .instrucao-forte { background: #fffbe6; border-left: 5px solid #f59e0b; padding: 15px; font-size: 0.95em; margin: 20px 0; border-radius: 0 10px 10px 0; }
+        .alerta-bio { background: #f0fdf4; border: 1px solid #bbf7d0; padding: 15px; border-radius: 10px; font-size: 0.85em; color: #166534; }
+        
+        .link-img { display: block; text-align: center; margin: 20px 0; color: var(--primary); text-decoration: none; font-weight: bold; font-size: 0.9em; }
+        .link-img img { width: 100%; border-radius: 10px; margin-bottom: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+
+        .btn { border: none; border-radius: 10px; padding: 18px; font-weight: bold; cursor: pointer; width: 100%; transition: 0.3s; text-decoration: none; display: flex; justify-content: center; align-items: center; }
+        .btn-audio { background: #f1f5f9; color: var(--primary); margin-bottom: 10px; border: 1px solid #cbd5e1; }
+        .btn-next { background: #cbd5e1; color: white; cursor: not-allowed; pointer-events: none; }
+        .btn-active { background: var(--accent) !important; color: white !important; cursor: pointer !important; pointer-events: auto !important; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="card">
+            <h1>Dia 1: O Cômodo Chave</h1>
+            <button id="btnOuvir" class="btn btn-audio" onclick="toggleAudio()">▶ OUVIR ORIENTAÇÃO</button>
+            
+            <div id="artigo">
+                <p>Por que começar pelo ambiente? Seu cérebro lê o espaço físico como um mapa de sua mente. Onde há acúmulo e desordem, há "ruído cognitivo" que drena sua energia de manutenção.
+
+Focar no Cômodo Chave e na ordem imediata é dar um comando direto de paz ao seu sistema nervoso. Não buscamos perfeição, buscamos funcionalidade e clareza visual. Quando você limpa aquele cômodo ignorado, você está entrando em um processo de <strong>quebra de padrão</strong>.</p>
+                
+                <p>Todas as vezes que você passava e olhava para aquela desordem, sujeira e abandono, seu cérebro processava automaticamente uma informação de <strong>conformismo e rendição ao caos</strong>.</p>
+
+                <div class="instrucao-forte">
+                    <strong>Atenção:</strong> Evite fazer essa limpeza usando fones de ouvido ou qualquer outra distração! Faça de forma consciente. Não se trata de uma faxina habitual, mas de uma <strong>reprogramação neuroemocional</strong>. No futuro, quando isso for um hábito, você poderá ouvir música. Agora, o foco é desintoxicar-se da dopamina vencida!
+                </div>
+
+                <a href="1-img.png" class="link-img">
+                    <img src="1-img.png" alt="Desinstalação Física">
+                    O início da desinstalação é mais físico do que você imagina!
+                </a>
+
+                <ul class="task-list">
+                    <li class="task-item"><input type="checkbox" class="check-step"> <span>Entrar no Cômodo Chave com atenção plena</span></li>
+                    <li class="task-item"><input type="checkbox" class="check-step"> <span>Remover a sujeira e o abandono visual</span></li>
+                    <li class="task-item"><input type="checkbox" class="check-step"> <span>Organizar sem distrações (sem fones)</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Manutenção Biológica</h3>
+            <div class="alerta-bio">
+                <strong>Nota Clínica:</strong> Desânimo e peso emocional podem ter raízes biológicas. O <strong>Albendazol</strong> (disponível gratuitamente no SUS) auxilia na limpeza interna, permitindo que o humor se estabilize. Verifique sua necessidade de desparasitação.
+            </div>
+            <div class="task-item">
+                <input type="checkbox" class="check-step"> <span>Compreendo a importância da desparasitação</span>
+            </div>
+        </div>
+
+        <button id="btnProximo" class="btn btn-next" onclick="window.location.href='6.html'">DESBLOQUEAR DIA 2</button>
+    </div>
+
+    <div vw class="enabled"><div vw-access-button class="active"></div><div vw-plugin-wrapper></div></div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+
+        const checks = document.querySelectorAll('.check-step');
+        const btnNext = document.getElementById('btnProximo');
+
+        checks.forEach(check => {
+            check.addEventListener('change', () => {
+                const todosMarcados = Array.from(checks).every(c => c.checked);
+                if (todosMarcados) {
+                    btnNext.classList.add('btn-active');
+                    btnNext.innerText = "AVANÇAR PARA O DIA 2";
+                } else {
+                    btnNext.classList.remove('btn-active');
+                    btnNext.innerText = "COMPLETE AS TAREFAS";
+                }
+            });
+        });
+
+        let falando = false;
+        let synthesis = window.speechSynthesis;
+        function toggleAudio() {
+            if (!falando) {
+                const texto = document.getElementById('artigo').innerText + " Lembre-se também da manutenção biológica.";
+                const msg = new SpeechSynthesisUtterance(texto);
+                msg.lang = 'pt-BR';
+                msg.onend = () => { document.getElementById('btnOuvir').innerText = "▶ OUVIR ORIENTAÇÃO"; falando = false; };
+                synthesis.speak(msg);
+                document.getElementById('btnOuvir').innerText = "⏹ PARAR";
+                falando = true;
+            } else { synthesis.cancel(); document.getElementById('btnOuvir').innerText = "▶ OUVIR ORIENTAÇÃO"; falando = false; }
+        }
+    </script>
+</body>
+</html>

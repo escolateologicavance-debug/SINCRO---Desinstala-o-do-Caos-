@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dia 4 - Engenharia das Emoções</title>
+    <style>
+        :root { --primary: #1a2a6c; --gold: #b8860b; --bg: #f4f7f6; --text: #2c3e50; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 15px; }
+        .container { max-width: 500px; margin: 0 auto; }
+        
+        .card { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); margin-bottom: 20px; border-top: 5px solid var(--primary); }
+        h1 { color: var(--primary); font-size: 1.4em; text-align: center; margin-bottom: 20px; }
+        
+        .btn-audio-top { background: #fff; color: var(--primary); border: 2px solid var(--primary); border-radius: 12px; padding: 15px; font-weight: bold; cursor: pointer; width: 100%; margin-bottom: 20px; font-size: 1.1em; }
+
+        .clinica-box { background: #fdfdfd; border: 1px solid #e0e0e0; padding: 15px; border-radius: 12px; margin: 15px 0; font-size: 0.95em; }
+        .biblico-anchor { background: #fff9db; border-left: 5px solid var(--gold); padding: 15px; margin: 20px 0; font-style: italic; font-size: 0.9em; }
+
+        .gestao-grid { display: grid; grid-template-columns: 1fr; gap: 15px; margin: 25px 0; }
+        .gestao-item { background: #eff6ff; padding: 20px; border-radius: 15px; border-left: 4px solid var(--primary); }
+        .gestao-item h3 { margin: 0 0 10px 0; font-size: 1.1em; color: var(--primary); }
+        
+        .check-missao { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid #eee; }
+        .check-missao input { width: 22px; height: 22px; cursor: pointer; }
+
+        .btn-avancar { background: var(--primary); color: white; border: none; padding: 20px; border-radius: 15px; width: 100%; font-weight: bold; cursor: pointer; text-decoration: none; display: block; text-align: center; margin-top: 10px; font-size: 1.1em; }
+        img { width: 100%; border-radius: 15px; margin: 20px 0; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="audio-top-box">
+        <button class="btn-audio-top" onclick="toggleAudio()" id="btnAudio">Ouvir</button>
+    </div>
+
+    <div class="card" id="conteudoGestao">
+        <h1>Dia 4: Gestão de Ativos Mentais</h1>
+        
+        <p>Gerir emoções não é reprimi-las, mas dar a elas o <b>direcionamento funcional</b>. Assim como você não deixa o lixo acumular na cozinha, você não pode deixar detritos emocionais acumularem no seu sistema racional.</p>
+
+        <div class="clinica-box">
+            <b>O Que Gerir?</b> Você deve gerir o seu <b>Orçamento Energético</b>. Se você gasta energia com rancor ou discussões inúteis, faltará energia para a cura e para a ação consciente. A manutenção é diária porque o desgaste é diário.
+        </div>
+
+        <div class="gestao-grid">
+            <div class="gestao-item">
+                <h3>1. Gestão de Entradas</h3>
+                <p>O que você ouve e vê determina o seu humor. Filtre notícias e conversas tóxicas. Proteja seus olhos e ouvidos como portais do templo. A decisão é radical: <b>Não porei coisa má diante dos meus olhos</b> como diz o Salmo 101 verso 3.</p>
+            </div>
+            <div class="gestao-item">
+                <h3>2. Gestão de Reações</h3>
+                <p>Entre o estímulo e a resposta, existe um espaço. É nesse espaço que reside sua liberdade. Use a Pausa Sincro, com três respirações profundas, antes de reagir. É a aplicação do domínio próprio: <b>Melhor é o que domina o seu espírito do que o que toma uma cidade</b>, como está escrito em Provérbios 16 verso 32.</p>
+            </div>
+        </div>
+
+        <div class="biblico-anchor">
+            Sobre tudo o que se deve guardar, guarda o teu coração, porque dele procedem as fontes da vida. Provérbios 4 verso 23.
+        </div>
+
+        <h3>Missão de Manutenção Diária</h3>
+        <div class="check-missao">
+            <input type="checkbox"> <span>Identifiquei um gasto inútil de energia hoje</span>
+        </div>
+        <div class="check-missao">
+            <input type="checkbox"> <span>Apliquei a Pausa Sincro em um momento de stress</span>
+        </div>
+        <div class="check-missao">
+            <input type="checkbox"> <span>Alimentei meu espírito com uma verdade bíblica</span>
+        </div>
+
+        <a href="4-img.png" style="text-decoration:none;">
+            <img src="4-img.png" alt="Engenharia Emocional">
+            <p style="text-align:center; color:var(--primary); font-weight:bold;">A gestão eficiente transforma caos em propósito!</p>
+        </a>
+    </div>
+
+    <a href="9.html" class="btn-avancar">SUBIR PARA O DIA 5</a>
+</div>
+
+<div vw class="enabled"><div vw-access-button class="active"></div><div vw-plugin-wrapper></div></div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
+
+<script>
+    let synth = window.speechSynthesis;
+    let falando = false;
+
+    function toggleAudio() {
+        const btn = document.getElementById('btnAudio');
+        if (!falando) {
+            let texto = document.getElementById('conteudoGestao').innerText;
+            let utterance = new SpeechSynthesisUtterance(texto);
+            utterance.lang = 'pt-BR';
+            utterance.onstart = () => { falando = true; btn.innerText = "Parar"; };
+            utterance.onend = () => { falando = false; btn.innerText = "Ouvir"; };
+            synth.speak(utterance);
+        } else {
+            synth.cancel();
+            falando = false;
+            btn.innerText = "Ouvir";
+        }
+    }
+</script>
+</body>
+</html>

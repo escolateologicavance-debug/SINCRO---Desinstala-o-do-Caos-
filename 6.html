@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dia 2 - Higiene Dopaminérgica</title>
+    <style>
+        :root { --primary: #1a2a6c; --accent: #d9534f; --light: #f8fafc; --text: #334155; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--light); color: var(--text); margin: 0; padding: 20px; line-height: 1.6; }
+        .container { max-width: 500px; margin: 0 auto; }
+        
+        .card { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); margin-bottom: 20px; border: 1px solid #e2e8f0; }
+        h1 { color: var(--primary); font-size: 1.4em; margin-bottom: 15px; text-align: center; }
+        
+        .citacao-biblica { background: #fff; border-left: 4px solid var(--primary); padding: 15px; margin: 20px 0; font-style: italic; font-size: 0.95em; }
+        .citacao-biblica a { color: var(--primary); text-decoration: none; font-weight: bold; }
+
+        .foco-aula { background: #fff5f5; border: 1px dashed var(--accent); padding: 15px; border-radius: 12px; margin: 20px 0; }
+        
+        .link-contextual { display: block; text-align: center; margin: 25px 0; color: var(--primary); text-decoration: none; font-weight: 600; font-size: 0.9em; }
+        .link-contextual img { width: 100%; border-radius: 12px; margin-bottom: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+
+        .task-list { list-style: none; padding: 0; }
+        .task-item { display: flex; align-items: center; gap: 12px; padding: 15px 0; border-bottom: 1px solid #f1f5f9; }
+        .task-item input[type="checkbox"] { width: 22px; height: 22px; cursor: pointer; accent-color: var(--accent); }
+
+        .btn { border: none; border-radius: 12px; padding: 18px; font-weight: bold; cursor: pointer; width: 100%; transition: 0.3s; display: flex; justify-content: center; align-items: center; text-decoration: none; }
+        .btn-audio { background: #f1f5f9; color: var(--primary); margin-bottom: 12px; }
+        .btn-next { background: #cbd5e1; color: white; cursor: not-allowed; pointer-events: none; }
+        .btn-active { background: var(--primary) !important; color: white !important; cursor: pointer !important; pointer-events: auto !important; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="card">
+            <h1>Dia 2: A Verdade sobre a Manutenção</h1>
+            <button id="btnOuvir" class="btn btn-audio" onclick="toggleAudio()">▶ OUVIR AULA</button>
+            
+            <div id="artigo">
+                <p>A Sincroterapia não promete uma solução definitiva para os problemas emocionais. Simplesmente porque ela não existe. O próprio Senhor Jesus foi claro:</p>
+                
+                <div class="citacao-biblica">
+                    "No mundo tereis aflições, mas tende bom ânimo; eu venci o mundo." 
+                    (<a href="https://www.bibliaonline.com.br/arc/jo/16/33" target="_blank">João 16:33</a>)
+                </div>
+
+                <p>Dizer que uma única intervenção resolve tudo seria como dizer que o cômodo que você organizou ontem nunca mais ficará sujo. Isso é utópico e desonesto. Desordens acontecem; o que não é normal é que o caos se torne o seu padrão de moradia.</p>
+
+                <div class="foco-aula">
+                    <strong>Higiene Dopaminérgica:</strong> Assim como o espaço físico exige limpeza diária, seu campo emocional precisa ser protegido das "fugas" que drenam sua clareza.
+                </div>
+
+                <a href="2-img.png" class="link-contextual">
+                    <img src="2-img.png" alt="Higiene Mental">
+                    O ruído digital é a poeira que cega o seu discernimento!
+                </a>
+
+                <p>Hoje, seu foco é filtrar o que entra. A dopamina barata (redes sociais, notificações, vídeos infinitos) é o "lixo" que acumula e impede a desinstalação do caos.</p>
+
+                <ul class="task-list">
+                    <li class="task-item"><input type="checkbox" class="check-day"> <span>Desativar TODAS as notificações não vitais hoje</span></li>
+                    <li class="task-item"><input type="checkbox" class="check-day"> <span>Corte total de vídeos curtos (Reels/TikTok/Shorts)</span></li>
+                    <li class="task-item"><input type="checkbox" class="check-day"> <span>Manter o silêncio digital por 1 hora antes de dormir</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <button id="btnProximo" class="btn btn-next" onclick="window.location.href='7.html'">ESTABILIZAR DIA 2</button>
+    </div>
+
+    <div vw class="enabled"><div vw-access-button class="active"></div><div vw-plugin-wrapper></div></div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+
+        const checks = document.querySelectorAll('.check-day');
+        const btnNext = document.getElementById('btnProximo');
+
+        checks.forEach(check => {
+            check.addEventListener('change', () => {
+                const todosMarcados = Array.from(checks).every(c => c.checked);
+                if (todosMarcados) {
+                    btnNext.classList.add('btn-active');
+                    btnNext.innerText = "AVANÇAR PARA O DIA 3";
+                } else {
+                    btnNext.classList.remove('btn-active');
+                    btnNext.innerText = "ESTABILIZAR DIA 2";
+                }
+            });
+        });
+
+        let falando = false;
+        let synthesis = window.speechSynthesis;
+        function toggleAudio() {
+            if (!falando) {
+                const texto = document.getElementById('artigo').innerText;
+                const msg = new SpeechSynthesisUtterance(texto);
+                msg.lang = 'pt-BR';
+                msg.onend = () => { document.getElementById('btnOuvir').innerText = "▶ OUVIR AULA"; falando = false; };
+                synthesis.speak(msg);
+                document.getElementById('btnOuvir').innerText = "⏹ PARAR";
+                falando = true;
+            } else { synthesis.cancel(); document.getElementById('btnOuvir').innerText = "▶ OUVIR AULA"; falando = false; }
+        }
+    </script>
+</body>
+</html>

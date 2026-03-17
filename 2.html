@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sincroterapia - Bem-vindo</title>
+    <style>
+        :root { --primary: #1a2a6c; --accent: #4a90e2; --text: #555; --bg: #f9fbfd; }
+        body { font-family: 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; line-height: 1.7; }
+        .container { max-width: 500px; margin: 0 auto; }
+        .header { text-align: center; margin-bottom: 25px; }
+        .logo { width: 90px; }
+        
+        article { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.03); border: 1px solid #edf2f7; }
+        h1 { color: var(--primary); font-size: 1.5em; text-align: center; margin-top: 0; font-weight: 600; }
+        .destaque { color: var(--primary); font-weight: 600; }
+        
+        .analogia-suave { background: #f0f7ff; border-radius: 12px; padding: 20px; margin: 25px 0; border-left: 5px solid var(--accent); color: #3e5871; font-size: 0.95em; }
+        
+        .controls { display: flex; flex-direction: column; gap: 15px; margin-top: 30px; }
+        .btn { border: none; border-radius: 12px; padding: 16px; font-weight: bold; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; text-decoration: none; }
+        #btnOuvir { background: #fff; color: var(--primary); border: 1px solid var(--primary); }
+        .btn-proximo { background: var(--primary); color: white; box-shadow: 0 6px 15px rgba(26, 42, 108, 0.2); }
+        .btn-proximo:hover { background: #121d4d; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <img src="logo-192.png" alt="Sincroterapia" class="logo">
+        </div>
+
+        <article id="artigo">
+            <h1>Um novo olhar para você</h1>
+            
+            <p>Que bom que você está aqui. Antes de tudo, <span class="destaque">não se sinta mal</span> por buscar este suporte. Cuidar das emoções é, acima de tudo, um ato de inteligência e carinho consigo mesmo (a).</p>
+            
+            <p>A <span class="destaque">Sincroterapia</span> entende que a vida é um movimento constante. Por isso, nosso foco não é apenas resgatar o seu bem-estar, mas ensinar você a fazer a <strong>manutenção</strong> dele todos os dias.</p>
+
+            <div class="analogia-suave">
+                "Imagine que você percebe um pequeno ajuste necessário em seu caminho, como um pneu que precisa de uma calibragem ou conserto para seguir viagem. Não precisamos nos demorar explicando ao borracheiro cada pedra que passamos pelo trajeto ou que furou o pneu. Assim também, nosso  Foco está em deixar tudo pronto para que você continue sua jornada com leveza e segurança."
+            </div>
+
+            <p>Aprendemos com o exemplo maior de cuidado: o acolhimento que vai direto ao que o coração precisa. Em vez de revirar sofrimentos antigos, focamos no agora. Perguntamos, com toda atenção: <strong>"O que você precisa que seja feito hoje?"</strong></p>
+
+            <p>Aqui, você não é um paciente em análise, mas alguém em processo de <span class="destaque">sincronia</span>. Vamos substituir o peso do desabafo pela leveza da solução prática. Estamos juntos nessa Trajetória  da vida!</p>
+        </article>
+
+        <div class="controls">
+            <button id="btnOuvir" class="btn" onclick="toggleAudio()">▶ OUVIR ACOLHIMENTO</button>
+            <a href="3.html" class="btn btn-proximo">VAMOS COMEÇAR JUNTOS?</a>
+        </div>
+    </div>
+
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+        
+        let falando = false;
+        let synthesis = window.speechSynthesis;
+        
+        function toggleAudio() {
+            if (!falando) {
+                const texto = document.getElementById('artigo').innerText;
+                const msg = new SpeechSynthesisUtterance(texto);
+                msg.lang = 'pt-BR';
+                msg.rate = 1.0; 
+                msg.onend = () => resetBtn();
+                synthesis.speak(msg);
+                document.getElementById('btnOuvir').innerHTML = "⏹ PARAR LEITURA";
+                falando = true;
+            } else { 
+                synthesis.cancel(); 
+                resetBtn(); 
+            }
+        }
+        
+        function resetBtn() {
+            document.getElementById('btnOuvir').innerHTML = "▶ OUVIR ACOLHIMENTO";
+            falando = false;
+        }
+    </script>
+</body>
+</html>

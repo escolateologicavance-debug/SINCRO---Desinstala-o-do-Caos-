@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SINCRO - Créditos Finais</title>
+    <style>
+        :root { --gold: #ca8a04; --white: #ffffff; --bg: #000000; }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg);
+            color: var(--white);
+            font-family: 'Segoe UI', serif;
+            overflow: hidden; /* Trava o scroll manual para o efeito de filme */
+        }
+
+        /* Container que vai subir */
+        .wrapper {
+            position: absolute;
+            top: 100%;
+            width: 100%;
+            animation: subirCreditos 25s linear forwards; /* Tempo total da subida */
+            text-align: center;
+        }
+
+        @keyframes subirCreditos {
+            0% { top: 100%; }
+            100% { top: -150%; } /* Ajuste conforme o tamanho do texto */
+        }
+
+        .secao { margin-bottom: 50px; }
+        .titulo-credito { 
+            color: var(--gold); 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            font-size: 0.9em; 
+            margin-bottom: 10px;
+        }
+        .nome { font-size: 1.4em; font-weight: bold; margin-bottom: 5px; }
+        .subtitulo { font-size: 1em; opacity: 0.8; }
+
+        .grande-final {
+            font-size: 2em;
+            color: var(--gold);
+            margin-top: 100px;
+            font-style: italic;
+        }
+
+        .assinatura-final {
+            margin-top: 150px;
+            padding-bottom: 100px;
+        }
+
+        /* Botão para voltar ao início ou sair, aparece só no final */
+        .btn-reiniciar {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.8em;
+            opacity: 0;
+            animation: aparecerBtn 5s ease forwards;
+            animation-delay: 20s;
+        }
+
+        @keyframes aparecerBtn { to { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        
+        <div class="secao">
+            <p class="titulo-credito">Idealização e Metodologia</p>
+            <p class="nome">MÉTODO SINCRO®</p>
+            <p class="subtitulo">Sincroterapia e Gestão Emocional</p>
+        </div>
+
+        <div class="secao">
+            <p class="titulo-credito">Terapeuta Responsável</p>
+            <p class="nome">GILBERTO MOREIRA</p>
+            <p class="subtitulo">Especialista em Engenharia Comportamental</p>
+        </div>
+
+        <div class="secao">
+            <p class="titulo-credito">Desenvolvimento Clínico</p>
+            <p class="nome">NÚCLEO SINCRO</p>
+            <p class="subtitulo">Itanhangá, Mato Grosso, Brasil</p>
+        </div>
+
+        <div class="secao">
+            <p class="titulo-credito">Base Antropológica</p>
+            <p class="nome">SINCROTERAPIA PSICOBÍBLICA</p>
+            <p class="subtitulo">Convicção, Integridade e Governo Próprio</p>
+        </div>
+
+        <div class="secao">
+            <p class="titulo-credito">Tecnologia Emocional</p>
+            <p class="nome">CALCULADORA MC SYNKHRO®</p>
+            <p class="subtitulo">Algoritmo de Coerência Mental</p>
+        </div>
+
+        <div class="secao">
+            <p class="grande-final">Você Ultrapassando limites!</p>
+        </div>
+
+        <div class="assinatura-final">
+            <p class="nome">PAZ AO MUNDO</p>
+            <p class="nome">PAZ À ISRAEL</p>
+            <br>
+            <p class="subtitulo">© 2026 - Direitos Reservados</p>
+        </div>
+
+    </div>
+
+    <a href="1.html" class="btn-reiniciar">REVISAR JORNADA</a>
+
+    <div vw class="enabled"><div vw-access-button class="active"></div><div vw-plugin-wrapper></div></div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
+
+</body>
+</html>
